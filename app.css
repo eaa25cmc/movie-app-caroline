@@ -38,10 +38,16 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+    sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background: linear-gradient(135deg, var(--bg) 0%, #1a1a1a 50%, var(--primary-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg) 0%,
+    #1a1a1a 50%,
+    var(--primary-light) 100%
+  );
   color: var(--text);
   min-height: 100vh;
 }
@@ -63,6 +69,30 @@ main {
   gap: 1rem;
   align-items: center;
   margin-bottom: 2rem;
+}
+
+/* År filter styling */
+.year-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.year-filter input {
+  width: 80px;
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.year-filter input:focus {
+  outline: 2px solid var(--secondary);
+  border-color: var(--secondary);
 }
 
 #search-input {
@@ -145,14 +175,14 @@ footer {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.2s ease;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .movie-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   border-color: var(--secondary);
 }
 
@@ -165,7 +195,11 @@ footer {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  background: linear-gradient(135deg, var(--secondary-light), var(--primary-light));
+  background: linear-gradient(
+    135deg,
+    var(--secondary-light),
+    var(--primary-light)
+  );
   transition: var(--transition);
 }
 
@@ -397,5 +431,36 @@ dialog#movie-dialog::backdrop {
   }
   #close-dialog {
     background: rgba(23, 23, 23, 0.9);
+  }
+}
+
+/* Mobile først - 1 kolonne */
+#movie-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Tablet - 2 kolonner */
+@media (min-width: 600px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* Desktop - 3 kolonner */
+@media (min-width: 992px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Store skærme - 4 kolonner */
+@media (min-width: 1400px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
