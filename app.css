@@ -464,3 +464,91 @@ dialog#movie-dialog::backdrop {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+
+/* Ekstra styling til nye filter felter */
+.year-filter,
+.rating-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.year-filter label,
+.rating-filter label {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.year-filter input,
+.rating-filter input {
+  width: 80px;
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.year-filter input:focus,
+.rating-filter input:focus {
+  outline: 2px solid var(--secondary);
+  border-color: var(--secondary);
+}
+
+#clear-filters {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#clear-filters:hover {
+  background: var(--error);
+  color: white;
+  border-color: var(--error);
+  transform: translateY(-2px);
+}
+
+#clear-filters:focus {
+  outline: 2px solid var(--secondary);
+  border-color: var(--secondary);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+}
+
+/* Responsive filter bar */
+@media (max-width: 768px) {
+  .filterbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .year-filter,
+  .rating-filter {
+    justify-content: space-between;
+  }
+
+  .year-filter input,
+  .rating-filter input {
+    width: 100px;
+  }
+}

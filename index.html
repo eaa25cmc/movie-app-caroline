@@ -3,56 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App Session 3</title>
+    <title>Movie App</title>
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
     <header>
       <h1>🎬 Movie Database</h1>
-      <p>Søg, filtrer og sortér dine yndlingsfilm</p>
     </header>
 
     <main>
-      <!-- Filter Bar -->
-      <section class="filterbar">
-        <input id="search-input" type="search" placeholder="Søg film..." />
+      <!-- Filter bar med alle filtreringsmuligheder -->
+      <div class="filterbar">
+        <input type="text" id="search-input" placeholder="Søg efter film..." />
+
         <select id="genre-select">
           <option value="all">Alle genrer</option>
-          <!-- Genre options will be populated from JS -->
+          <!-- Genrer indsættes dynamisk via JavaScript -->
         </select>
 
-        <!-- Tilføj denne linje til din filter-bar sektion -->
+        <!-- År range filter -->
+        <div class="year-filter">
+          <label for="year-from">Fra år:</label>
+          <input
+            type="number"
+            id="year-from"
+            placeholder="2000"
+            min="1900"
+            max="2030"
+          />
+          <label for="year-to">Til år:</label>
+          <input
+            type="number"
+            id="year-to"
+            placeholder="2025"
+            min="1900"
+            max="2030"
+          />
+        </div>
+
+        <!-- Rating range filter -->
+        <div class="rating-filter">
+          <label for="rating-from">Fra rating:</label>
+          <input
+            type="number"
+            id="rating-from"
+            placeholder="0"
+            min="0"
+            max="10"
+            step="0.1"
+          />
+          <label for="rating-to">Til rating:</label>
+          <input
+            type="number"
+            id="rating-to"
+            placeholder="10"
+            min="0"
+            max="10"
+            step="0.1"
+          />
+        </div>
+
         <select id="sort-select">
           <option value="none">Ingen sortering</option>
           <option value="title">Sortér: Titel (A-Å)</option>
           <option value="year">Sortér: År (nyeste først)</option>
           <option value="rating">Sortér: Rating (højeste først)</option>
         </select>
-        <!-- År range filter - TILFØJ KUN DENNE -->
-        <div class="year-filter">
-          <label>📅 År:</label>
-          <input
-            type="number"
-            id="year-from"
-            placeholder="Fra år"
-            min="1900"
-            max="2024"
-          />
-          <span>til</span>
-          <input
-            type="number"
-            id="year-to"
-            placeholder="Til år"
-            min="1900"
-            max="2024"
-          />
-        </div>
-      </section>
-      <!-- Movie List -->
-      <section id="movie-list">
-        <!-- Movie items will be displayed here - from JS -->
+
+        <button id="clear-filters" class="clear-btn">🗑️ Ryd alle filtre</button>
+      </div>
+
+      <!-- Movie grid -->
+      <section id="movie-list" class="movie-grid">
+        <!-- Film vil blive indsat her dynamisk -->
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© RACE - Rasmus Cederdorff</p>
+    </footer>
+
+    <!-- Movie Detail Modal -->
+    <dialog id="movie-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content">
+          <!-- Movie details will be injected here via JavaScript -->
+        </div>
+      </form>
+    </dialog>
     <script src="app.js"></script>
   </body>
 </html>
